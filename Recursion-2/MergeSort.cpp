@@ -2,13 +2,15 @@
 using namespace std;
 
 void merge(int input[], int si, int ei) {
+	int size = ei - si + 1;
+
 	int mid = (si+ei)/2;
 
 	int i = si;	//Pointer for 1st array
 	int j = mid+1;	//Pointer for 2nd array
 	int k = si;	//Pointer for temp array
 
-	int temp[100];	// Temp Array where result will be copied
+	int * temp = new int[size];	// Temp Array where result will be copied
 
 	while(i<=mid && j<=ei) {
 		if(input[i] < input[j]) {
@@ -30,6 +32,8 @@ void merge(int input[], int si, int ei) {
 	for(int i=si;i<=ei;i++) {
 		input[i] = temp[i];
 	}
+
+	delete [] temp;
 }
 
 void mergeSortHelper(int input[], int si, int ei) {
@@ -49,6 +53,7 @@ void mergeSort(int input[], int size){
 	mergeSortHelper(input, 0, size-1);
 }
 
+	
 int main() {
   int input[1000],length;
   cin >> length;
