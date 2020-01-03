@@ -28,7 +28,8 @@ class Fraction {
 		this -> denominator = this -> denominator / gcd;
 	}
 
-	void add(Fraction f2) {
+	// const &f2 means passing by constant reference to prevent illegal changes (const) and extra creation of object (&)
+	void add(Fraction const &f2) {
 		int lcm = denominator * f2.denominator;
 		int x = lcm / denominator;
 		int y = lcm / f2.denominator;
@@ -39,5 +40,12 @@ class Fraction {
 		denominator = lcm;
 			
 		simplify();	// Call simplify on this (whaterver is passed f1 here)
+	}
+
+	void multiply(Fraction const &f2) {
+		numerator = numerator * f2.numerator;
+		denominator = denominator * f2.denominator;
+
+		simplify();
 	}
 };

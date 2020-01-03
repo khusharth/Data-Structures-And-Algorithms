@@ -10,4 +10,8 @@ int main() {
 	
 	f1.print();
 	f2.print();
+
+	f1.multiply();
+	f1.print();
+	f2.print();
 }
