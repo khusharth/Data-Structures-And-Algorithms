@@ -6,19 +6,22 @@ Node* takeInput() {
 	int data;
 	cin >> data;
 	Node *head = NULL;
-	
+	Node *tail = NULL;	// Using tail to reduce complexity from n2 to n
 	while(data != -1) {
 		// Node n(data); Static allocation will get deallocated once out of scope
 		Node *newNode = new Node(data);	// Dynamic allocation
 		if(head == NULL) {
 			head = newNode;
+			tail = newNode;
 		}
 		else {
-			Node *temp = head;
+			tail -> next = newNode;
+			tail = tail -> next;	// OR tail = newNode;
+			/*Node *temp = head;
 			while(temp -> next != NULL) {
 				temp = temp -> next;
 			}
-			temp -> next = newNode;
+			temp -> next = newNode;*/
 		}
 		cin >> data;
 	}
