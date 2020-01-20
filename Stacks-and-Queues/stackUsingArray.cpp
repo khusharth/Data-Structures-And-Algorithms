@@ -31,11 +31,28 @@ class StackUsingArray {
 		return nextIndex == 0;	
 	}
 
-	// Insert Element
+	// Insert Element (Static)
+	/*
 	void push(int element) {
 		if(nextIndex == capacity) {
 			cout << "Stack is full" << endl;
 			return;
+		}
+		data[nextIndex] = element;
+		nextIndex++;
+	}
+	*/
+
+	// Insert Element (Dynamic)
+	void push(int element) {
+		if(nextIndex == capacity) {
+			int *newData = new int[2 * capacity];
+			for(int i = 0; i < capacity; i++) {
+				newData[i] = data[i];
+			}
+			capacity *= 2;
+			delete [] data;
+			data = newData;		// Changing the data pointer to point to newArraykmnbv
 		}
 		data[nextIndex] = element;
 		nextIndex++;
